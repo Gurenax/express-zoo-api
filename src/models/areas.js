@@ -15,25 +15,6 @@ let areas = [
 
 let nextID = areas.length + 1
 
-// WHERE equals to an area name
-function where(query) {
-  return areas.filter(area => {
-    return area.name.toLowerCase() === query.toLowerCase()
-  })
-}
-
-// SORT areas by name
-function sortByName() {
-  areas.sort((a, b) => {
-    let nameA = a.name.toLowerCase()
-    let nameB = b.name.toLowerCase()
-    if (nameA < nameB) return -1
-    if (nameA > nameB) return 1
-    return 0 // If they are equal
-  })
-  return areas
-}
-
 /// CRUDS
 
 // READ
@@ -107,7 +88,5 @@ module.exports = {
   find,
   create,
   destroy,
-  update,
-  sortByName,
-  where
+  update
 }

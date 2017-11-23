@@ -14,18 +14,8 @@ const router = express.Router()
 
 // GET all areas
 router.get('/areas', (req, res) => {
-  // When the q variable is indiicated in the url, get the query string
-  const query = req.url.replace('/areas', '').replace(new RegExp(/^\?q=/gi), '')
-  // If a query string is available, use the WHERE method in area
-  if (query) {
-    const queriedArea = Area.where(query)
-    res.json(queriedArea)
-  } else {
-    // Otherwise, just select all areas
-    const areas = Area.all()
-    // const sortedAreas = Area.sortByName()
-    res.json(areas)
-  }
+  const areas = Area.all()
+  res.json(areas)
 })
 
 // DELETE specific area
