@@ -40,3 +40,38 @@ Content-Type: application/json
   "name": "Tiger",
   "count": 50
 }
+
+
+
+### Get all Sea Critters
+GET http://localhost:7000/sea-critters
+### Get specific Sea Critter
+GET http://localhost:7000/sea-critters/1
+### Create new Sea Critter
+POST http://localhost:7000/sea-critters
+Content-Type: application/json
+
+{
+  "name": "Ctenophora elegans",
+  "count": 1
+}
+### Create another new Sea Critter
+POST http://localhost:7000/sea-critters
+Content-Type: application/json
+
+{
+  "name": "Nymphon residuum",
+  "count": 5
+}
+
+### Delete anSea Critter
+DELETE http://localhost:7000/sea-critters/2
+
+### UPDATE a Sea Critter
+PATCH http://localhost:7000/sea-critters/4
+Content-Type: application/json
+
+{
+  "name": "Fangtooth",
+  "count": 50
+}

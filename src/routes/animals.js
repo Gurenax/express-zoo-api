@@ -3,10 +3,33 @@ const Animal = require('../models/animals')
 
 const router = express.Router()
 
+// // GET all animals with WHERE query
+// router.get('/animals/q/:query', (req, res) => {
+//   const query = req.params.query
+//   console.log(query)
+//   // const animals = Animal.all()
+//   const queriedAnimal = Animal.where(query)
+//   res.json(queriedAnimal)
+// })
+
 // GET all animals
 router.get('/animals', (req, res) => {
-  const animals = Animal.all()
-  res.json(animals)
+  // When the q variable is indiicated in the url, get the query string
+  let query = req.url.replace('/animals','')
+  query = query.replace(new RegExp(/^\?q=/ig),'')
+  console.log(query)
+
+  // If a query string is available, use the WHERE method in Animal
+  if(query) {
+    const queriedAnimal = Animal.where(query)
+    res.json(queriedAnimal)
+  }
+  // Otherwise, just select all animals
+  else {
+    // const animals = Animal.all()
+    const sortedAnimals = Animal.sortByName()
+    res.json(sortedAnimals)
+  }
 })
 
 // DELETE specific animal

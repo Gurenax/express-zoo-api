@@ -18,6 +18,27 @@ let animals = [
 
 let nextID = animals.length + 1
 
+// WHERE equals to an animal name
+function where(query) {
+  return animals.filter( animal => {
+    return animal.name.toLowerCase() === query.toLowerCase()
+  })
+}
+
+// SORT animals by name
+function sortByName() {
+  animals.sort( (a,b) => {
+    let nameA = a.name.toLowerCase();
+    let nameB = b.name.toLowerCase();
+    if (nameA < nameB) return -1;
+    if (nameA > nameB) return 1;
+    return 0; // If they are equal
+  })
+  return animals
+}
+
+/// CRUDS
+
 // READ
 // Returns all animals
 function all() {
@@ -90,5 +111,7 @@ module.exports = {
   find,
   create,
   destroy,
-  update
+  update,
+  sortByName,
+  where
 }
