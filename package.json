@@ -11,6 +11,6 @@
     "nodemon": "^1.12.1"
   },
   "scripts": {
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon --inspect src/server.js"
   }
 }
