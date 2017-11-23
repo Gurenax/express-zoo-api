@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 
 const server = express()
 
@@ -9,6 +10,9 @@ const server = express()
 // server.get('/about', (req, res) => {
 //   res.json({ message: 'This is about' })
 // })
+
+// Body Parser
+server.use(bodyParser.json())
 
 server.use('/', [
   require('./routes/tickets'),

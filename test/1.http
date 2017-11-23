@@ -4,7 +4,15 @@ GET http://localhost:7000/
 GET http://localhost:7000/about
 ###
 GET http://localhost:7000/tickets
-###
+### Get all animals
 GET http://localhost:7000/animals
-###
+### Get specific animal
 GET http://localhost:7000/animals/1
+### Create new animal
+POST http://localhost:7000/animals
+Content-Type: application/json
+
+{
+  "name": "Lion",
+  "count": 1
+}
