@@ -4,6 +4,10 @@ GET http://localhost:7000/
 GET http://localhost:7000/about
 ###
 GET http://localhost:7000/tickets
+
+
+
+
 ### Get all animals
 GET http://localhost:7000/animals
 ### Get specific animal
@@ -15,4 +19,24 @@ Content-Type: application/json
 {
   "name": "Lion",
   "count": 1
+}
+### Create another new animal
+POST http://localhost:7000/animals
+Content-Type: application/json
+
+{
+  "name": "Wolf",
+  "count": 5
+}
+
+### Delete an animal
+DELETE http://localhost:7000/animals/2
+
+### UPDATE an animal
+PATCH http://localhost:7000/animals/4
+Content-Type: application/json
+
+{
+  "name": "Tiger",
+  "count": 50
 }
