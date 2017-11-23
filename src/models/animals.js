@@ -1,3 +1,5 @@
+const Area = require('./areas')
+
 let animals = [
   {
     id: 1,
@@ -23,21 +25,37 @@ let nextID = animals.length + 1
 
 // WHERE equals to an animal name
 function where(query) {
-  return animals.filter(animal => {
+  const filteredAnimals = animals.filter(animal => {
     return animal.name.toLowerCase() === query.toLowerCase()
   })
+  if(filteredAnimals.length===0) return null
+  // Return with area info
+  return populateAreaInfo(filteredAnimals)
 }
 
 // SORT animals by name
-function sortByName() {
-  animals.sort((a, b) => {
+function sortByName(unsortedAnimals) {
+  const sortedAnimals = unsortedAnimals.slice()
+  sortedAnimals.sort((a, b) => {
     let nameA = a.name.toLowerCase()
     let nameB = b.name.toLowerCase()
     if (nameA < nameB) return -1
     if (nameA > nameB) return 1
     return 0 // If they are equal
   })
-  return animals
+  return sortedAnimals
+}
+
+// Populate area info in animals data
+function populateAreaInfo(animals) {
+  const animalsWithArea = animals.map(animal => {
+    // Copy the animal object and modify the area
+    const animalCopy = Object.assign({}, animal)
+    animalCopy.area = Area.find(animal.area)
+    // Return the copy
+    return animalCopy
+  })
+  return animalsWithArea
 }
 
 /// CRUDS
@@ -45,7 +63,9 @@ function sortByName() {
 // READ
 // Returns all animals
 function all() {
-  return animals
+  // Return with area info and sorted by name
+  const allAnimals = animals.slice()
+  return sortByName(populateAreaInfo(allAnimals))
 }
 
 // Returns a specific animal
