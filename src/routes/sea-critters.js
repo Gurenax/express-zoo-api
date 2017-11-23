@@ -10,7 +10,14 @@ router.get('/sea-critters', (req, res) => {
   // If a query string is available, use the WHERE method in sea critter
   if (query) {
     const queriedSeaCritter = SeaCritter.where(query)
-    res.json(queriedSeaCritter)
+    if (queriedSeaCritter) {
+      res.status(200).json(queriedSeaCritter)
+    } else {
+      // Query was not found
+      res
+        .status(404)
+        .json({ error: `The sea critter with name '${query}' was not found` })
+    }
   } else {
     // Otherwise, just select all sea critter
     const seaCritters = SeaCritter.all()
