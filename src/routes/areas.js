@@ -15,10 +15,7 @@ const router = express.Router()
 // GET all areas
 router.get('/areas', (req, res) => {
   // When the q variable is indiicated in the url, get the query string
-  let query = req.url.replace('/areas', '')
-  query = query.replace(new RegExp(/^\?q=/gi), '')
-  console.log(query)
-
+  const query = req.url.replace('/areas', '').replace(new RegExp(/^\?q=/gi), '')
   // If a query string is available, use the WHERE method in area
   if (query) {
     const queriedArea = Area.where(query)

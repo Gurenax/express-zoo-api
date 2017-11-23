@@ -5,9 +5,25 @@ const router = express.Router()
 
 // GET all seaCritters
 router.get('/sea-critters', (req, res) => {
-  const seaCritters = SeaCritter.all()
-  res.json(seaCritters)
+  // When the q variable is indiicated in the url, get the query string
+  const query = req.url.replace('/sea-critters', '').replace(new RegExp(/^\?q=/gi), '')
+  // If a query string is available, use the WHERE method in sea critter
+  if (query) {
+    const queriedSeaCritter = SeaCritter.where(query)
+    res.json(queriedSeaCritter)
+  } else {
+    // Otherwise, just select all sea critter
+    // const seaCritter = SeaCritter.all()
+    const sortedSeaCritter = SeaCritter.sortByName()
+    res.json(sortedSeaCritter)
+  }
 })
+
+// // GET all seaCritters
+// router.get('/sea-critters', (req, res) => {
+//   const seaCritters = SeaCritter.all()
+//   res.json(seaCritters)
+// })
 
 // DELETE specific seaCritter
 router.delete('/sea-critters/:id', (req, res) => {

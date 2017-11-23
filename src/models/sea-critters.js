@@ -33,6 +33,25 @@ let seaCritters = [
 
 let nextID = seaCritters.length + 1
 
+// WHERE equals to an seaCritter name
+function where(query) {
+  return seaCritters.filter(seaCritter => {
+    return seaCritter.name.toLowerCase() === query.toLowerCase()
+  })
+}
+
+// SORT seaCritters by name
+function sortByName() {
+  seaCritters.sort((a, b) => {
+    let nameA = a.name.toLowerCase()
+    let nameB = b.name.toLowerCase()
+    if (nameA < nameB) return -1
+    if (nameA > nameB) return 1
+    return 0 // If they are equal
+  })
+  return seaCritters
+}
+
 // READ
 // Returns all seaCritter
 function all() {
@@ -104,5 +123,7 @@ module.exports = {
   find,
   create,
   destroy,
-  update
+  update,
+  sortByName,
+  where
 }
