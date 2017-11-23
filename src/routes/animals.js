@@ -27,13 +27,16 @@ router.get('/animals', (req, res) => {
     res.json(queriedAnimal)
   } else {
     // Otherwise, just select all animals
-    // const animals = Animal.all()
-    const sortedAnimals = Animal.sortByName()
+    Animal.sortByName() // Sort first by name
+    const animals = Animal.all()
+    // Animal.all().sort
+    // const sortedAnimals = Animal.sortByName()
+
     // Populate animal area information
-    sortedAnimals.map(animal => {
+    animals.map(animal => {
       animal.area = Area.find(animal.area)
     })
-    res.json(sortedAnimals)
+    res.json(animals)
   }
 })
 

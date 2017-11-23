@@ -13,9 +13,9 @@ router.get('/sea-critters', (req, res) => {
     res.json(queriedSeaCritter)
   } else {
     // Otherwise, just select all sea critter
-    // const seaCritter = SeaCritter.all()
-    const sortedSeaCritter = SeaCritter.sortByName()
-    res.json(sortedSeaCritter)
+    const seaCritters = SeaCritter.all()
+    // const sortedSeaCritter = SeaCritter.sortByName()
+    res.json(seaCritters)
   }
 })
 

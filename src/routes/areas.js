@@ -22,9 +22,9 @@ router.get('/areas', (req, res) => {
     res.json(queriedArea)
   } else {
     // Otherwise, just select all areas
-    // const areas = Area.all()
-    const sortedAreas = Area.sortByName()
-    res.json(sortedAreas)
+    const areas = Area.all()
+    // const sortedAreas = Area.sortByName()
+    res.json(areas)
   }
 })
 
