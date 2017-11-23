@@ -6,3 +6,5 @@ GET http://localhost:7000/about
 GET http://localhost:7000/tickets
 ###
 GET http://localhost:7000/animals
+###
+GET http://localhost:7000/animals/1
