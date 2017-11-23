@@ -2,17 +2,20 @@ let animals = [
   {
     id: 1,
     name: 'Meerkat',
-    count: 27
+    count: 27,
+    area: 1
   },
   {
     id: 2,
     name: 'Rhinoceros',
-    count: 4
+    count: 4,
+    area: 2
   },
   {
     id: 3,
     name: 'Giraffe',
-    count: 8
+    count: 8,
+    area: 3
   }
 ]
 
@@ -20,19 +23,19 @@ let nextID = animals.length + 1
 
 // WHERE equals to an animal name
 function where(query) {
-  return animals.filter( animal => {
+  return animals.filter(animal => {
     return animal.name.toLowerCase() === query.toLowerCase()
   })
 }
 
 // SORT animals by name
 function sortByName() {
-  animals.sort( (a,b) => {
-    let nameA = a.name.toLowerCase();
-    let nameB = b.name.toLowerCase();
-    if (nameA < nameB) return -1;
-    if (nameA > nameB) return 1;
-    return 0; // If they are equal
+  animals.sort((a, b) => {
+    let nameA = a.name.toLowerCase()
+    let nameB = b.name.toLowerCase()
+    if (nameA < nameB) return -1
+    if (nameA > nameB) return 1
+    return 0 // If they are equal
   })
   return animals
 }
@@ -87,7 +90,6 @@ function update(id, attributes) {
   return animal
 }
 
-
 // DESTROY
 function destroy(id) {
   // Ensure id is an integer
@@ -95,9 +97,9 @@ function destroy(id) {
 
   // Delete the animal
   // const index = animals.findIndex((animal) => { return animal.id === id} )
-  const index = animals.findIndex( animal => animal.id === id)
-  
-  if (index===-1) return null
+  const index = animals.findIndex(animal => animal.id === id)
+
+  if (index === -1) return null
 
   // Remove the animal at index
   removed = animals.splice(index, 1)

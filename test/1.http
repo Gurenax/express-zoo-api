@@ -75,3 +75,40 @@ Content-Type: application/json
   "name": "Fangtooth",
   "count": 50
 }
+
+
+
+
+
+### Get all Areas
+GET http://localhost:7000/areas
+### Get specific Area
+GET http://localhost:7000/areas/1
+### Create new Area
+POST http://localhost:7000/areas
+Content-Type: application/json
+
+{
+  "name": "Ice"
+}
+### Create another new Area
+POST http://localhost:7000/areas
+Content-Type: application/json
+
+{
+  "name": "Desert"
+}
+
+### Delete an Area
+DELETE http://localhost:7000/areas/2
+
+### UPDATE a Area
+PATCH http://localhost:7000/areas/4
+Content-Type: application/json
+
+{
+  "name": "Fangtooth",
+  "count": 50
+}
+
+
