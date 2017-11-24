@@ -16,12 +16,13 @@ const router = express.Router()
 // GET all animals
 router.get('/animals', (req, res) => {
   // When the q variable is indiicated in the url, get the query string
-  const query = req.url
-    .replace('/animals', '')
-    .replace(new RegExp(/^\?q=/gi), '')
+  const query = req.query
+  // req.url
+  //   .replace('/animals', '')
+  //   .replace(new RegExp(/^\?q=/gi), '')
   // If a query string is available, use the WHERE method in Animal
-  if (query) {
-    const queriedAnimal = Animal.where(query)
+  if (query.q) {
+    const queriedAnimal = Animal.where(query.q)
     // console.log(queriedAnimal)
     if (queriedAnimal) {
       res.status(200).json(queriedAnimal)
@@ -29,7 +30,7 @@ router.get('/animals', (req, res) => {
       // Query was not found
       res
         .status(404)
-        .json({ error: `The animal with name '${query}' was not found` })
+        .json({ error: `The animal with name '${query.q}' was not found` })
     }
     // Otherwise, just select all animals
   } else {
